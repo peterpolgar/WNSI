@@ -10,3 +10,9 @@ A routing algorihm must be a separate modul file, whose requirements can be foun
 Currently there are two built-in routing algorithm modul which can be used: Ant Colony Optimization (ACO), and a not SI based algorithm: Dijkstra (for reference purposes)
 
 Currently the Optimization button and the Batch run option do not do anything, these are placeholders for new features.
+
+Built with the Qt framework.
+
+How to run the application:
+Prerequisites: - install Qt for Python: https://doc.qt.io/qtforpython-5/index.html , - install a software which is based on the Message Passing Interface (MPI) standard, for example OpenMPI or Microsoft MPI.
+If you downloaded the source files, you can run the application from the command line with this command: mpiexec -n 1 python dm_program_v12.py
