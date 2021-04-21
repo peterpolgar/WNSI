@@ -1,0 +1,7 @@
+When you use the WNSI software, for the proper working please remember the following imortant thing:
+After the modification of the following global parameters, you need to generate a new WSN topology with
+a click on the "Locate sensors" button to enable these parameter changes to take effect on the next run:
+ - Number of sensors
+ - Battery energy (E0)
+ - Enhanced nodes (EN) rate (%)
+ - Extra energy of ENS (%)
