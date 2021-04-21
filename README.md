@@ -11,7 +11,9 @@ Currently there are two built-in routing algorithm modul which can be used: Ant 
 
 Currently the Optimization button and the Batch run option do not do anything, these are placeholders for new features.
 
-Built with the Qt framework.
+Built with the Qt framework. The callout chart example of Qt (python variant of this: https://doc.qt.io/qt-5/qtcharts-callout-example.html, which is in the Qt Python package "pyside2") was used, and the WNSI software includes a modified version of it.
+
+Acknowledgement to emulbreh for the implemented Bridson algorithm: https://github.com/emulbreh/bridson/blob/master/bridson/__init__.py
 
 ## How to run the application:
 Prerequisites:
