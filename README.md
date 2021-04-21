@@ -13,6 +13,11 @@ Currently the Optimization button and the Batch run option do not do anything, t
 
 Built with the Qt framework.
 
-How to run the application:
-Prerequisites: - install Qt for Python: https://doc.qt.io/qtforpython-5/index.html , - install a software which is based on the Message Passing Interface (MPI) standard, for example OpenMPI or Microsoft MPI.
+## How to run the application:
+Prerequisites:
+
+- install Qt for Python: https://doc.qt.io/qtforpython-5/index.html
+
+- install a software which is based on the Message Passing Interface (MPI) standard, for example OpenMPI or Microsoft MPI.
+
 If you downloaded the source files, you can run the application from the command line with this command: mpiexec -n 1 python dm_program_v12.py
