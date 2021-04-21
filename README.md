@@ -20,4 +20,6 @@ Prerequisites:
 
 - install a software which is based on the Message Passing Interface (MPI) standard, for example OpenMPI or Microsoft MPI.
 
-If you downloaded the source files, you can run the application from the command line with this command: mpiexec -n 1 python dm_program_v12.py
+If you downloaded the source files, you can run the application from the command line with this command:
+
+mpiexec -n 1 python dm_program_v12.py
