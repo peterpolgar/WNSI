@@ -1349,7 +1349,7 @@ class Widget(QWidget):
         self.whattovisList.setObjectName("whatToW")
         n = QListWidgetItem("Number of frames received by the sink")
         self.whattovisList.addItem(n)
-        n = QListWidgetItem("Average hopcount of all meas.")
+        n = QListWidgetItem("Average hopcount of all measurements")
         self.whattovisList.addItem(n)
         n = QListWidgetItem("Average of all failed meas. transmissions rate (%)")
         self.whattovisList.addItem(n)
@@ -1359,7 +1359,7 @@ class Widget(QWidget):
         self.whattovisList.addItem(n)
         n = QListWidgetItem("Average energy for all comm. rate (%)")
         self.whattovisList.addItem(n)
-        n = QListWidgetItem("All routing alg. fails")
+        n = QListWidgetItem("All routing algorithm fails")
         self.whattovisList.addItem(n)
         n = QListWidgetItem("All frames received by the sink (bar chart)")
         self.whattovisList.addItem(n)
@@ -2037,7 +2037,7 @@ class Widget(QWidget):
                 bs.setColor(QColor(self.grafColors[dd], self.grafColors[dd + 1], self.grafColors[dd + 2]))
                 seri.setPen(bs)
             self.chartView.setSeries(seriesList)
-            self.chartView.setXTitle("10 round")
+            self.chartView.setXTitle("rounds [10x]")
             fmat = ""
             if cr == 0 or cr == 6:
                 fmat = '%.0f'
@@ -2077,11 +2077,11 @@ class Widget(QWidget):
                 return
             bsname = ""
             if cr == 7:
-                bsname = "All frames received by the sink (bar chart)"
+                bsname = "All frames received by the sink [ ]"
             elif cr == 8:
-                bsname = "Average hopcount (bar chart)"
+                bsname = "Average hopcount [ ]"
             else:
-                bsname = "Lifetime in rounds (bar chart)"
+                bsname = "Lifetime in rounds [ ]"
             barset = QtCharts.QBarSet(bsname)
             barset.setLabelFont(self.barFont)
             barset.setLabelColor(Qt.white)
@@ -2103,25 +2103,19 @@ class Widget(QWidget):
         
         if isLine:
             if cr == 0:
-                self.chartView.setYTitle("No. frames received by the sink")
+                self.chartView.setYTitle("No. frames received by the sink [ ]")
             elif cr == 1:
-                self.chartView.setYTitle("Average hopcount of all meas.")
+                self.chartView.setYTitle("Average hopcount of all measurements [ ]")
             elif cr == 2:
-                self.chartView.setYTitle("Average of all failed meas. transmissions rate (%)")
+                self.chartView.setYTitle("Average of all failed meas. transmissions rate [%]")
             elif cr == 3:
-                self.chartView.setYTitle("Average charge rate at live nodes (%)")
+                self.chartView.setYTitle("Average charge rate at live nodes [%]")
             elif cr == 4:
-                self.chartView.setYTitle("Average number of frame forwarding")
+                self.chartView.setYTitle("Average number of frame forwarding [ ]")
             elif cr == 5:
-                self.chartView.setYTitle("Average energy for all comm. rate (%)")
+                self.chartView.setYTitle("Average energy for all comm. rate [%]")
             elif cr == 6:
-                self.chartView.setYTitle("All routing alg. fails")
-            elif cr == 7:
-                self.chartView.setYTitle("All frames received by the sink (bar chart)")
-            elif cr == 8:
-                self.chartView.setYTitle("Average hopcount (bar chart)")
-            elif cr == 9:
-                self.chartView.setYTitle("Lifetime in rounds (bar chart)")
+                self.chartView.setYTitle("All routing algorithm fails [ ]")
         
         if self.l_bottom_stack.currentIndex() != 1:
             self.l_bottom_stack.setCurrentIndex(1)
