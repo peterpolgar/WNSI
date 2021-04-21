@@ -1,0 +1,7 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>icons/downarrow.png</file>
+    <file>icons/wnsi_logo.png</file>
+    <file>icons/bee_swarm.png</file>
+</qresource>
+</RCC>
