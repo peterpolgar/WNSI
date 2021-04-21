@@ -1,0 +1,15 @@
+A routing algorithm modul must be a python file, which satisfies the following requirements:
+ - The name of the file is the name of the routing algorithm + ".py".
+ In the .py file:
+ - Include a class whose name is the same as the file name.
+   This class must be include the following class variables (with examples):
+    - para_count = 3   # number of routing algorithm specific parameters
+    - para_names = ['first', 'second', 'third']   # the names of the parameters
+    - para_types = [0, 2, 1]   # the types of the parameters: 0: integer, 1: float, 2: categorical
+    - para_range_starts = [1, 0, 20]   # the starts of the ranges of the parameters
+    - para_range_ends = [30, 0, 40]   # the ends of the ranges of the parameters
+    - para_def_values = [10, 1, 35]   # the default values of the parameters
+    - para_cat_values = [[], ['basic', 'advanced', 'expert'], []]   # if the type of a parameter is 0 or 1 (int or float) then write: [], else if categorical, then list the categories in a list
+   
+
+...not finished...
