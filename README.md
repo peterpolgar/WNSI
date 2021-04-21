@@ -15,10 +15,10 @@ Built with the Qt framework. The callout chart example of Qt (python variant of 
 
 Acknowledgement to emulbreh for the implemented Bridson algorithm: https://github.com/emulbreh/bridson/blob/master/bridson/__init__.py
 
-## How to run the application:
+## How to run the application
 Prerequisites:
 
-- install Qt for Python: https://doc.qt.io/qtforpython-5/index.html
+- install Qt for Python: https://doc.qt.io/qtforpython-5/gettingstarted.html
 
 - install a software which is based on the Message Passing Interface (MPI) standard, for example OpenMPI or Microsoft MPI.
 
