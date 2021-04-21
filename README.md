@@ -1,2 +1,12 @@
 # WNSI
 Wireless Network simulator with Swarm Intelligence
+
+The purpose of this software to provide an opportonity to test various swarm intelligence based routing algorithms on Wireless Sensor Networks (WSN).
+
+A WSN can be parameterized with the so called "global" parameters. A routing algorithm can have several so called "specific" parameters.
+
+A routing algorihm must be a separate modul file, whose requirements can be found in the "modul_specification.txt" file. New moduls can be added by placing them to the "si_algs" subfolder. New moduls, which are already in the "si_algs" subfolder will be loaded at program startup, and new moduls can be loaded into the running appication by placing the modul file into the subfolder and then click on the "R" (refresh) button in the application.
+
+Currently there are two built-in routing algorithm modul which can be used: Ant Colony Optimization (ACO), and a not SI based algorithm: Dijkstra (for reference purposes)
+
+Currently the Optimization button and the Batch run option do not do anything, these are placeholders for new features.
