@@ -6,13 +6,13 @@ import math
 # import importlib
 
 class ACO:
-    para_count = 7
-    para_names = ['Number of ants per round', 'Alpha', 'Beta', 'Pheromone decay coeff.', 'Max pheromone value', 'Min pheromone value', 'Init. priority of the sink (%)']
-    para_types = [0, 0, 0, 1, 1, 1, 0]
-    para_range_starts = [1, 1, 1, 0.01, 1, 0.01, 10]
-    para_range_ends = [10, 14, 14, 0.99, 20, 1, 90]
-    para_def_values = [2, 1, 1, 0.1, 6, 0.1, 50]
-    para_cat_values = [[], [], [], [], [], [], []]
+    para_count = 8
+    para_names = ['Number of ants per round', 'Alpha', 'Beta', 'Pheromone decay coeff.', 'Max pheromone value', 'Min pheromone value', 'Init. pheromone value', 'Init. priority of the sink (%)']
+    para_types = [0, 0, 0, 1, 1, 1, 1, 0]
+    para_range_starts = [1, 1, 1, 0.01, 1, 0.01, 0.5, 10]
+    para_range_ends = [10, 14, 14, 0.99, 50, 10, 25, 90]
+    para_def_values = [2, 1, 1, 0.1, 6, 0.1, 1, 50]
+    para_cat_values = [[], [], [], [], [], [], [], []]
 
 
 if __name__ == "__main__":
@@ -247,7 +247,8 @@ if __name__ == "__main__":
     ferDecay = alg_spec_paras[3]
     ferMax = alg_spec_paras[4]
     ferMin = alg_spec_paras[5]
-    priorSink = alg_spec_paras[6] / 100
+    inFerVal = alg_spec_paras[6]
+    priorSink = alg_spec_paras[7] / 100
     print('NoAnts', NoAnts)
     print('ACOalpha', ACOalpha)
     print('ACObeta', ACObeta)
@@ -255,7 +256,7 @@ if __name__ == "__main__":
     print('ferMax', ferMax)
     print('ferMin', ferMin)
     print('priorSink', priorSink)
-    feroArray = [[1] * (sensorCount + 1) for _ in range(sensorCount)]
+    feroArray = [[inFerVal] * (sensorCount + 1) for _ in range(sensorCount)]
     azx = priorSink / (1 - priorSink)
     for i in range(sensorCount):
         if isSinkAvailArr[i]:
@@ -263,7 +264,7 @@ if __name__ == "__main__":
             for j in range(sensorCount):
                 if neighbors_dists[i][j] != -1:
                     necount += 1
-            feroArray[i][sensorCount] = necount * azx
+            feroArray[i][sensorCount] = necount * azx * inFerVal
     feroSumArray = [[0] * (sensorCount + 1) for _ in range(sensorCount)]
     antForwQueues = [[] for i in range(sensorCount)]
     antBackQueues = [[] for i in range(sensorCount)]
