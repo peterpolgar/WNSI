@@ -193,7 +193,7 @@ if __name__ == "__main__":
     framelen = glob_paras[FRAMELEN] * 8
     # oneBcastCost = 2.5 * 0.00001 * 25 * framelen
     #            = Efs *   (5 * d0)^2   * framelen
-    oneBcastCost = Efs * 25 * METERD0**2 * framelen
+    oneBcastCost = (Efs * maxtav**bLoss / METERD0**(bLoss - 2)) * 26 * 8
     recCost = oneBitRecCost * framelen
     readyStateCost = 80 * oneBitRecCost
     # modositast igenyelhet a 0.01
