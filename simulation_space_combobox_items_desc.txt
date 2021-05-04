@@ -1,0 +1,18 @@
+The followings are descriptions of the items of the combobox which can be found on the upper right corner of the eventspace of the WNSI software:
+
+For each sensor node:
+ - "Charge level" [%]: (current energy level / initial energy level) * 100 ; How many percent of the initial energy level are currently in this node
+ - "Lifetime" [rounds]: How many rounds did this node have lived before it is discharged, or if this node has not yet discharged then the number of rounds passed so far
+ - "No. meas. received by sink" [pcs.]: The number of the frames initiated from this node and successfully received by the sink
+ - "Number of measurements" [pcs.]: The number of measurements done by this node
+ - "Sent own measurements" [pcs.]: The number of the measurement frames initiated from this node (always 1 measurement in 1 frame)
+                                   correspond to: "Number of measurements" - "Number of routing alg. fails"
+ - "Forwarded measurements" [pcs.]: The number of the forwarded measurement frames initiated from other nodes
+ - "All sent measurements" [pcs.]: The sum of "Sent own measurements" and "Forwarded measurements"
+ - "Total energy for all comm." [%]: The ratio of all energy for communication compared to the initial energy level
+ - "Number of lost frames (own)" [pcs.]: "Number of measurements" - "No. meas. received by sink"
+ - "Number of lost frames (fw)" [pcs.]: The number of (measurement frames of other nodes could not be transmitted or received)
+ - "Number of routing alg. fails" [pcs.]: The number of failed target selection by the routing algorithm (thus frame forwarding was not possible)
+ - "Average hop count" [hop]: Average hop count of frames initiated by this node and received by the sink
+ - "Own meas. received by sink rate" [%]: ("No. meas. received by sink" / frames initiated from this node) * 100
+ - "Successfull sending rate" [%]: The ratio of successfully transmitted frames compared to all attempts to send
