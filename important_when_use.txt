@@ -5,3 +5,5 @@ a click on the "Locate sensors" button to enable these parameter changes to take
  - Battery energy (E0)
  - Enhanced nodes (EN) rate (%)
  - Extra energy of ENS (%)
+
+When you want to see simulation datas of each node of a saved run then if there are no sensors in the ROI then click on the "Locate sensors" button
