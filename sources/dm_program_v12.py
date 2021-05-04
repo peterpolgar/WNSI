@@ -304,7 +304,7 @@ class Sim_widget(QWidget):
                         elif dispidx == 7:
                             aVal = (par.nrun.procData[8][i] / par.nrun.initBattCapArray[i]) * 100
                         elif dispidx == 8:
-                            aVal = par.nrun.procData[4][i]
+                            aVal = par.nrun.procData[7][i] - par.nrun.procData[9][i]
                         elif dispidx == 9:
                             aVal = par.nrun.procData[5][i]
                         elif dispidx == 10:
@@ -531,7 +531,9 @@ class Sim_widget(QWidget):
                     for xd in range(self.sens_count):
                         pointerToValues[xd] = (par.nrun.procData[8][xd] / par.nrun.initBattCapArray[xd]) * 100
                 elif dispidx == 8:
-                    pointerToValues = par.nrun.procData[4]
+                    pointerToValues = [0] * self.sens_count
+                    for xd in range(self.sens_count):
+                        pointerToValues[xd] = par.nrun.procData[7][xd] - par.nrun.procData[9][xd]
                 elif dispidx == 9:
                     pointerToValues = par.nrun.procData[5]
                 elif dispidx == 10:
@@ -1104,7 +1106,7 @@ class Widget(QWidget):
         self.FRAMELEN = 7
         
         k = QLabel()
-        z = Slider(1, 0, 1, 0.25, k, "Wakeful probability")
+        z = Slider(1, 0, 1, 0.8, k, "Wakeful probability")
         self.glob_para_controls.append(z)
         al = QVBoxLayout()
         al.addWidget(k)
@@ -1553,7 +1555,7 @@ class Widget(QWidget):
             # Number of lost frames (own)
             elif ci == 8:
                 for i in range(self.nrun.numProc):
-                    val = self.nrun.procData[4][i]
+                    val = self.nrun.procData[7][i] - self.nrun.procData[9][i]
                     if val < tmin:
                         tmin = val
                     if val > tmax:
