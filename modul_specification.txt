@@ -1,15 +1,90 @@
 A routing algorithm modul must be a python file, which satisfies the following requirements:
  - The name of the file is the name of the routing algorithm + ".py".
  In the .py file:
+ - Import at least these package(s):
+   from mpi4py import MPI  # mandatory import
+   import numpy as np      # recommended, because it can handle MPI buffer objects
  - Include a class whose name is the same as the file name.
    This class must be include the following class variables (with examples):
-    - para_count = 3   # number of routing algorithm specific parameters
+    - para_count = 3   # number of routing algorithm specific parameters, (can be 0, in this case, no need to define the other class parameters below)
     - para_names = ['first', 'second', 'third']   # the names of the parameters
     - para_types = [0, 2, 1]   # the types of the parameters: 0: integer, 1: float, 2: categorical
     - para_range_starts = [1, 0, 20]   # the starts of the ranges of the parameters
     - para_range_ends = [30, 0, 40]   # the ends of the ranges of the parameters
     - para_def_values = [10, 1, 35]   # the default values of the parameters
     - para_cat_values = [[], ['basic', 'advanced', 'expert'], []]   # if the type of a parameter is 0 or 1 (int or float) then write: [], else if categorical, then list the categories in a list
-   
 
-...not finished...
+We recommend using the modul_template.py template file to create a new module.
+
+You can see examples of modules in WNSI/source/si_algs/
+
+There are the minimum requirements for a workig module:
+The code must be under the following conditional statement (except functions and classes):
+if __name__ == "__main__":
+#The following codes must be included by a module (variable rename is possible):
+    # creat MPI comm
+    comm = MPI.Comm.Get_parent()
+    # receiving sensor coordinates
+    koord_array = None
+    koord_array = comm.bcast(koord_array, root=0)
+    # get global paras
+    glob_paras = None
+    glob_paras = comm.bcast(glob_paras, root=0)
+    # get alg spec paras
+    alg_spec_paras = None
+    alg_spec_paras = comm.bcast(alg_spec_paras, root=0)
+    
+    # get shared memory--------------------------------------------------------------------------------
+    universe = MPI.Intercomm.Merge(comm)
+    rankUni = universe.Get_rank()
+    # get parent uni rank
+    parRank = 0
+    parRank = comm.bcast(parRank, root=0)
+    # print("parRank", parRank)
+    
+    # create own shared memory
+    itemsize = MPI.DOUBLE.Get_size()
+    commPairItemCount = 10000
+    contShCount = 8
+    oneCountSize = 4000
+    shitemcount = (commPairItemCount + contShCount * oneCountSize)
+    nbytes = shitemcount * itemsize
+    win = MPI.Win.Allocate_shared(nbytes, itemsize, comm=universe)
+    myShData = np.ndarray(buffer=win.tomemory(), dtype='d', shape=(shitemcount))
+    myShData.fill(0)
+    # create the array of communication pairs, each pair consist of the sensder and the receiver node's index (index related to the koord_array)
+    commPairData = myShData[:commPairItemCount]
+    # create arrays for statistics, one array for one characteristic, and there are contShCount = 8 characteristics
+    contShMem = [0] * contShCount
+    for i in range(contShCount):
+        contShMem[i] = myShData[commPairItemCount + i * oneCountSize:commPairItemCount + (i + 1) * oneCountSize]
+    # wait until parent create and fill shared mem
+    universe.Barrier()
+    
+    # get access to parent shared mem
+    buf, itemsize = win.Shared_query(parRank)
+    assert itemsize == MPI.DOUBLE.Get_size()
+    # create array from the pointer
+    itemPerProc = 12
+    simGlobParaCount = 5
+    size = sensorCount * (itemPerProc + 2) + simGlobParaCount
+    sharedMem = np.ndarray(buffer=buf, dtype='d', shape=(size))
+    # print("proc", rank, sharedMem[0], sharedMem[1])
+    # take out datas from shared memory
+    # awake: 1, not awake: 0
+    wakeFulArray = sharedMem[simGlobParaCount:sensorCount + simGlobParaCount]
+    # for i in range(len(wakeFulArray)):
+    for i in range(sensorCount):
+        wakeFulArray[i] = (1 if random.random() <= wfp100 else 0)
+    battCapArray = sharedMem[sensorCount + simGlobParaCount:2 * sensorCount + simGlobParaCount]
+    initBattCap = battCapArray.copy()
+    sensorsData = sharedMem[2 * sensorCount + simGlobParaCount:].reshape(itemPerProc, sensorCount)
+    
+    # initalize your variables
+    
+    # do the simulation in your way
+    
+    universe.send(sinkHopArray, dest=parRank, tag=1)
+    universe.send(sinkSourceArray, dest=parRank, tag=1)
+    universe.Disconnect()
+    comm.Disconnect()
