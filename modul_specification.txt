@@ -69,15 +69,10 @@ if __name__ == "__main__":
     simGlobParaCount = 5
     size = sensorCount * (itemPerProc + 2) + simGlobParaCount
     sharedMem = np.ndarray(buffer=buf, dtype='d', shape=(size))
-    # print("proc", rank, sharedMem[0], sharedMem[1])
-    # take out datas from shared memory
-    # awake: 1, not awake: 0
     wakeFulArray = sharedMem[simGlobParaCount:sensorCount + simGlobParaCount]
-    # for i in range(len(wakeFulArray)):
     for i in range(sensorCount):
         wakeFulArray[i] = (1 if random.random() <= wfp100 else 0)
     battCapArray = sharedMem[sensorCount + simGlobParaCount:2 * sensorCount + simGlobParaCount]
-    initBattCap = battCapArray.copy()
     sensorsData = sharedMem[2 * sensorCount + simGlobParaCount:].reshape(itemPerProc, sensorCount)
     
     # initalize your variables
