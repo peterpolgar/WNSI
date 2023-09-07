@@ -24,8 +24,6 @@ Prerequisites:
 
 - install numpy: ```pip install numpy```
 
-- install Qt for Python: https://doc.qt.io/qtforpython-5/gettingstarted.html
-
 - install a software which is based on the Message Passing Interface (MPI) standard, for example OpenMPI or Microsoft MPI.
 
 - in case of (Ubuntu) Linux, maybe necessary to install all libxcb tools too, like this: ```sudo apt-get install libxcb*```
