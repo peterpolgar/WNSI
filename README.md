@@ -20,6 +20,8 @@ Prerequisites:
 
 - install mpi4py: ```python -m pip install mpi4py```
 
+- install numpy: ```pip install numpy```
+
 - install Qt for Python: https://doc.qt.io/qtforpython-5/gettingstarted.html
 
 - install a software which is based on the Message Passing Interface (MPI) standard, for example OpenMPI or Microsoft MPI.
