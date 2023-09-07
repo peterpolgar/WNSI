@@ -24,7 +24,7 @@ Prerequisites:
 
 - install numpy: ```pip install numpy```
 
-- install a software which is based on the Message Passing Interface (MPI) standard, for example OpenMPI or Microsoft MPI.
+- install an implementation of the Message Passing Interface (MPI) standard, for example OpenMPI or Microsoft MPI.
 
 - in case of (Ubuntu) Linux, maybe necessary to install all libxcb tools too, like this: ```sudo apt-get install libxcb*```
 
