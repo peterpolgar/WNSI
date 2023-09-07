@@ -18,7 +18,7 @@ Acknowledgement to emulbreh for the implemented Bridson algorithm: https://githu
 ## How to run the application
 Prerequisites:
 
-- install MPI4PY: ```python -m pip install mpi4py```
+- install mpi4py: ```python -m pip install mpi4py```
 
 - install Qt for Python: https://doc.qt.io/qtforpython-5/gettingstarted.html
 
