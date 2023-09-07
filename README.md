@@ -18,6 +18,8 @@ Acknowledgement to emulbreh for the implemented Bridson algorithm: https://githu
 ## How to run the application
 Prerequisites:
 
+- install PySide2: ```pip install PySide2```
+
 - install mpi4py: ```python -m pip install mpi4py```
 
 - install numpy: ```pip install numpy```
