@@ -18,6 +18,8 @@ Acknowledgement to emulbreh for the implemented Bridson algorithm: https://githu
 ## How to run the application
 Prerequisites:
 
+- install MPI4PY
+
 - install Qt for Python: https://doc.qt.io/qtforpython-5/gettingstarted.html
 
 - install a software which is based on the Message Passing Interface (MPI) standard, for example OpenMPI or Microsoft MPI.
