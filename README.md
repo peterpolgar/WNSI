@@ -28,6 +28,8 @@ Prerequisites:
 
 - install a software which is based on the Message Passing Interface (MPI) standard, for example OpenMPI or Microsoft MPI.
 
+- in case of (Ubuntu) Linux, maybe necessary to install all libxcb tools too, like this: ```sudo apt-get install libxcb*```
+
 If you downloaded the source files, you can run the application from the command line with this command:
 
-mpiexec -n 1 python dm_program_v12.py
+```mpiexec -n 1 python dm_program_v12.py```
