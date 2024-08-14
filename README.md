@@ -1,6 +1,10 @@
 # WNSI
 Wireless Network simulator with Swarm Intelligence
 
+![WNSI_simulation](pictures_of_the_app/simulator_example.png)
+
+[Further images of the application](https://github.com/peterpolgar/WNSI/tree/main/pictures_of_the_app)
+
 The purpose of this software to provide an opportonity to test various swarm intelligence (or other) based routing algorithms on Wireless Sensor Networks (WSN).
 
 A WSN can be parameterized with the so called "global" parameters. A routing algorithm can have several so called "specific" parameters.
